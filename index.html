@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080a09">
+  <meta name="description" content="ТВІЙ ХІД. Преміальний онлайн-покер.">
+  <title>ТВІЙ ХІД. — Преміальний онлайн-покер</title>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){
+    n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1399310622039113');
+    fbq('track','PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1399310622039113&ev=PageView&noscript=1" alt="">
+  </noscript>
+
+  <style>
+    :root{
+      --bg:#080a09;
+      --panel:#0d110f;
+      --panel2:#111713;
+      --text:#f2f0e9;
+      --muted:#929891;
+      --line:rgba(255,255,255,.10);
+      --line-soft:rgba(255,255,255,.06);
+      --green:#163d2d;
+      --green2:#1d503a;
+      --cream:#eee9dc;
+      --max:1240px;
+      --gutter:clamp(20px,4vw,56px);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:50;
+      pointer-events:none;
+      opacity:.025;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(var(--max),calc(100% - var(--gutter)*2));margin:0 auto}
+
+    /* HEADER */
+    .header{
+      position:absolute;
+      z-index:10;
+      top:0;left:0;right:0;
+      border-bottom:1px solid rgba(255,255,255,.075);
+    }
+    .header-inner{
+      height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+    }
+    .logo-mark{
+      width:25px;height:25px;
+      border:1px solid rgba(242,240,233,.45);
+      border-radius:50%;
+      display:grid;place-items:center;
+    }
+    .logo-mark:after{
+      content:"";
+      width:7px;height:7px;border-radius:50%;
+      background:var(--cream);
+    }
+    .header-note{
+      color:rgba(242,240,233,.48);
+      font-size:10px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    /* HERO */
+    .hero{
+      min-height:760px;
+      height:100svh;
+      max-height:1000px;
+      position:relative;
+      overflow:hidden;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(ellipse 55% 70% at 78% 48%,rgba(27,76,55,.23),transparent 68%),
+        linear-gradient(115deg,#080a09 0%,#090c0a 52%,#0a0e0c 100%);
+    }
+    .hero-inner{
+      height:100%;
+      display:grid;
+      grid-template-columns:48% 52%;
+      align-items:center;
+      position:relative;
+      z-index:2;
+    }
+    .hero-copy{
+      padding-top:72px;
+      position:relative;
+      z-index:3;
+    }
+    .eyebrow{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:rgba(242,240,233,.48);
+      font-size:9px;
+      font-weight:600;
+      letter-spacing:.25em;
+      text-transform:uppercase;
+      margin-bottom:30px;
+    }
+    .eyebrow span{
+      display:block;width:28px;height:1px;background:rgba(242,240,233,.38);
+    }
+    h1{
+      margin:0;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(70px,9.4vw,142px);
+      line-height:.82;
+      font-weight:400;
+      letter-spacing:-.065em;
+    }
+    .hero-subtitle{
+      margin:32px 0 0;
+      max-width:400px;
+      color:#a4a9a2;
+      font-size:16px;
+      line-height:1.65;
+    }
+    .hero-actions{
+      margin-top:37px;
+      display:flex;
+      align-items:center;
+      gap:20px;
+    }
+    .button{
+      height:56px;
+      padding:0 27px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:18px;
+      border-radius:2px;
+      background:var(--cream);
+      color:#0b0d0b;
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.17em;
+      transition:.25s ease;
+    }
+    .button:hover{
+      background:#fffdf7;
+      transform:translateY(-2px);
+    }
+    .button .arrow{font-size:16px;font-weight:400}
+    .action-note{
+      color:rgba(242,240,233,.38);
+      font-size:9px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    /* HERO TABLE */
+    .hero-art{
+      position:relative;
+      height:100%;
+      min-height:650px;
+    }
+    .table-wrap{
+      position:absolute;
+      width:min(700px,56vw);
+      aspect-ratio:1.38;
+      left:2%;
+      top:50%;
+      transform:translateY(-42%) rotate(-7deg);
+    }
+    .table-shadow{
+      position:absolute;
+      inset:7% 3% -8%;
+      border-radius:50%;
+      background:rgba(0,0,0,.72);
+      filter:blur(35px);
+    }
+    .table{
+      position:absolute;
+      inset:0;
+      border-radius:50%;
+      background:linear-gradient(145deg,#242824,#0b0d0c 62%,#1b1f1c);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.13),
+        inset 0 -22px 40px rgba(0,0,0,.5),
+        0 20px 55px rgba(0,0,0,.35);
+    }
+    .rail{
+      position:absolute;
+      inset:4.5%;
+      border-radius:50%;
+      background:#111512;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.09);
+    }
+    .felt{
+      position:absolute;
+      inset:9%;
+      border-radius:50%;
+      background:
+        radial-gradient(ellipse at 42% 36%,rgba(65,125,94,.24),transparent 47%),
+        radial-gradient(ellipse at 50% 50%,#1a4a36 0%,#123a2b 55%,#0c2b20 100%);
+      box-shadow:inset 0 0 50px rgba(0,0,0,.48);
+    }
+    .felt-ring{
+      position:absolute;
+      inset:8%;
+      border:1px solid rgba(241,237,224,.09);
+      border-radius:50%;
+    }
+
+    .playing-card{
+      position:absolute;
+      width:17%;
+      aspect-ratio:.70;
+      border-radius:6px;
+      background:linear-gradient(145deg,#f8f5ed,#d9d4c8);
+      color:#151714;
+      padding:9px;
+      font-family:Georgia,serif;
+      font-size:clamp(16px,2vw,27px);
+      font-weight:700;
+      box-shadow:0 20px 30px rgba(0,0,0,.35);
+    }
+    .card-a{left:37%;top:27%;transform:rotate(7deg)}
+    .card-k{left:49%;top:33%;transform:rotate(17deg)}
+
+    .chip{
+      position:absolute;
+      width:10%;
+      aspect-ratio:1;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 38% 32%,#737871 0 6%,#383c37 7% 39%,#171a18 40% 71%,#73766e 72% 76%,#191c1a 77%);
+      box-shadow:0 13px 23px rgba(0,0,0,.42),inset 0 0 0 1px rgba(255,255,255,.15);
+    }
+    .chip-a{left:60%;top:61%}
+    .chip-b{left:66%;top:55%;transform:translateY(-4px)}
+    .chip-c{left:70.5%;top:63%;transform:translateY(-2px)}
+
+    .hero-index{
+      position:absolute;
+      right:0;
+      bottom:56px;
+      color:rgba(242,240,233,.26);
+      font-family:Georgia,serif;
+      font-size:12px;
+      letter-spacing:.1em;
+    }
+
+    /* INTRO */
+    .intro{
+      border-bottom:1px solid var(--line);
+      padding:110px 0 120px;
+    }
+    .intro-grid{
+      display:grid;
+      grid-template-columns:1fr 2fr;
+      gap:80px;
+    }
+    .label{
+      color:rgba(242,240,233,.38);
+      font-size:9px;
+      font-weight:600;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+    }
+    .intro h2{
+      max-width:780px;
+      margin:0;
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:400;
+      font-size:clamp(42px,5vw,70px);
+      line-height:.98;
+      letter-spacing:-.045em;
+    }
+    .intro-text{
+      max-width:570px;
+      margin:31px 0 0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.8;
+    }
+
+    /* FEATURES */
+    .features{
+      padding:0;
+      border-bottom:1px solid var(--line);
+    }
+    .features-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+    }
+    .feature{
+      min-height:270px;
+      padding:46px 38px 45px 0;
+      border-right:1px solid var(--line);
+    }
+    .feature:not(:first-child){padding-left:38px}
+    .feature:last-child{border-right:0}
+    .feature-num{
+      color:rgba(242,240,233,.28);
+      font-size:9px;
+      letter-spacing:.18em;
+    }
+    .feature h3{
+      margin:50px 0 14px;
+      font-family:Georgia,serif;
+      font-size:28px;
+      font-weight:400;
+      letter-spacing:-.025em;
+    }
+    .feature p{
+      max-width:270px;
+      margin:0;
+      color:#777e76;
+      font-size:13px;
+      line-height:1.65;
+    }
+
+    /* CTA */
+    .cta-section{
+      padding:120px 0;
+    }
+    .cta-panel{
+      min-height:450px;
+      border:1px solid var(--line);
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      padding:70px;
+      background:
+        radial-gradient(circle at 80% 45%,rgba(31,83,60,.26),transparent 40%),
+        linear-gradient(120deg,#0d110f,#0a0d0b);
+    }
+    .cta-panel:before{
+      content:"";
+      position:absolute;
+      width:470px;height:470px;
+      right:-160px;top:-10px;
+      border:1px solid rgba(242,240,233,.075);
+      border-radius:50%;
+    }
+    .cta-panel:after{
+      content:"";
+      position:absolute;
+      width:340px;height:340px;
+      right:-95px;top:55px;
+      border:1px solid rgba(242,240,233,.05);
+      border-radius:50%;
+    }
+    .cta-content{position:relative;z-index:2}
+    .cta-kicker{
+      color:rgba(242,240,233,.38);
+      font-size:9px;
+      letter-spacing:.23em;
+      text-transform:uppercase;
+    }
+    .cta-panel h2{
+      margin:23px 0 0;
+      font-family:Georgia,serif;
+      font-size:clamp(45px,6vw,76px);
+      font-weight:400;
+      line-height:.94;
+      letter-spacing:-.05em;
+    }
+    .cta-panel .button{margin-top:34px}
+
+    /* FOOTER */
+    footer{
+      border-top:1px solid var(--line);
+      padding:25px 0 30px;
+    }
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      color:rgba(242,240,233,.30);
+      font-size:9px;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    @media(max-width:900px){
+      .hero-inner{grid-template-columns:1fr 1fr}
+      h1{font-size:clamp(65px,11vw,105px)}
+      .table-wrap{width:62vw;left:-4%}
+      .intro-grid{gap:45px}
+      .cta-panel{padding:55px}
+    }
+
+    @media(max-width:700px){
+      .header-inner{height:72px}
+      .header-note{display:none}
+
+      .hero{
+        height:auto;
+        min-height:0;
+        max-height:none;
+      }
+      .hero-inner{
+        min-height:820px;
+        display:block;
+      }
+      .hero-copy{
+        padding-top:142px;
+      }
+      h1{font-size:clamp(72px,21vw,110px)}
+      .hero-subtitle{
+        max-width:330px;
+        margin-top:25px;
+        font-size:14px;
+        line-height:1.65;
+      }
+      .hero-actions{
+        margin-top:28px;
+        display:block;
+      }
+      .button{width:100%;height:56px}
+      .action-note{
+        display:block;
+        margin-top:13px;
+        text-align:center;
+      }
+
+      .hero-art{
+        position:absolute;
+        height:370px;
+        min-height:0;
+        left:0;right:0;
+        bottom:-12px;
+      }
+      .table-wrap{
+        width:116vw;
+        left:-20vw;
+        top:2%;
+        transform:rotate(-7deg);
+      }
+      .hero-index{display:none}
+
+      .intro{padding:78px 0 85px}
+      .intro-grid{grid-template-columns:1fr;gap:25px}
+      .intro h2{font-size:43px}
+      .intro-text{font-size:14px;margin-top:23px}
+
+      .features-grid{grid-template-columns:1fr}
+      .feature{
+        min-height:0;
+        padding:34px 0 !important;
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
+      .feature:last-child{border-bottom:0}
+      .feature h3{margin:25px 0 10px;font-size:25px}
+      .feature p{max-width:100%}
+
+      .cta-section{padding:72px 0}
+      .cta-panel{
+        min-height:430px;
+        padding:35px 25px;
+        align-items:flex-start;
+      }
+      .cta-panel h2{font-size:46px}
+      .cta-panel:before{
+        width:340px;height:340px;
+        right:-190px;top:125px;
+      }
+      .cta-panel:after{
+        width:240px;height:240px;
+        right:-140px;top:175px;
+      }
+
+      .footer-inner{display:block;line-height:1.8}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .button{transition:none}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="logo" href="#" aria-label="Premium Poker">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>Premium Poker</span>
+      </a>
+      <span class="header-note">Online · Ukraine</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow"><span></span>Преміальний онлайн-покер</div>
+          <h1>ТВІЙ<br>ХІД.</h1>
+          <p class="hero-subtitle">
+            Преміальний онлайн-покер для тих, хто цінує момент,
+            точність і власні рішення.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button" href="https://t.me/+8T3KyV16nG04YzEy"
+               target="_blank" rel="noopener noreferrer"
+               onclick="if(window.fbq)fbq('track','Lead');">
+              ГРАТИ ЗАРАЗ <span class="arrow">↗</span>
+            </a>
+            <span class="action-note">Твій момент. Твій хід.</span>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="table-wrap">
+            <div class="table-shadow"></div>
+            <div class="table"></div>
+            <div class="rail"></div>
+            <div class="felt">
+              <div class="felt-ring"></div>
+              <div class="playing-card card-a">A♠</div>
+              <div class="playing-card card-k">K♠</div>
+              <div class="chip chip-a"></div>
+              <div class="chip chip-b"></div>
+              <div class="chip chip-c"></div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-index">01 / 03</div>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="container intro-grid">
+        <div class="label">01 / Філософія</div>
+        <div>
+          <h2>Нічого зайвого.<br>Лише твоя гра.</h2>
+          <p class="intro-text">
+            Коли кожне рішення має значення, не потрібен зайвий шум.
+            Зосередься на моменті, зроби свій хід і грай у своєму темпі —
+            онлайн, коли тобі зручно.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container features-grid">
+        <article class="feature">
+          <div class="feature-num">01 — ДОСВІД</div>
+          <h3>Преміальний формат</h3>
+          <p>Стриманий цифровий досвід без зайвих елементів і візуального шуму.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-num">02 — ДОСТУП</div>
+          <h3>Гра онлайн</h3>
+          <p>Твоя гра доступна там, де ти є. Просто відкрий і зроби наступний хід.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-num">03 — МОМЕНТ</div>
+          <h3>Твій хід</h3>
+          <p>Жодних підказок замість тебе. Рішення залишається за тобою.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-panel">
+          <div class="cta-content">
+            <div class="cta-kicker">Твій наступний хід</div>
+            <h2>Готовий<br>зіграти?</h2>
+            <a class="button" href="https://t.me/+8T3KyV16nG04YzEy"
+               target="_blank" rel="noopener noreferrer"
+               onclick="if(window.fbq)fbq('track','Lead');">
+              ГРАТИ ЗАРАЗ <span class="arrow">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>Premium Poker · Ukraine</span>
+      <span>© 2026 · Онлайн-покер</span>
+    </div>
+  </footer>
+</body>
+</html>
